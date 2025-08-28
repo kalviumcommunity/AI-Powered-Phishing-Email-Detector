@@ -1,46 +1,63 @@
 // 
 
+
+import fs from "fs";
 import dotenv from "dotenv";
 import OpenAI from "openai";
+
 import { systemPrompt } from "./prompts/systemPrompt.js";
 import { schemaPrompt } from "./prompts/schemaPrompt.js";
-import { fewShotPrompt } from "./prompts/fewShotPrompt.js";
+import { cotPrompt } from "./prompts/cotPrompt.js";
+import sampleEmail from "./samples/sampleEmail.json" with { type: "json" };
 
 dotenv.config();
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
-// Dynamic email input
-const email = {
-  sender: "it-support@secure-microsoft-login.com",
-  subject: "Reset your Microsoft password",
-  body: "We detected unusual login attempts. Reset your password immediately: http://bit.ly/ms-reset",
-};
-
-async function runDetection() {
-  const fullPrompt = `
+function buildPrompt(email) {
+  return `
 ${schemaPrompt}
 
-${fewShotPrompt}
+${cotPrompt}
 
-Now classify this email:
+Email Metadata:
+- Sender: ${email.sender}
+- Subject: ${email.subject}
+- Extra Context: ${email.metadata ? email.metadata : "None"}
 
-Sender: ${email.sender}
-Subject: ${email.subject}
-Body: ${email.body}
-Output:
+Email Body:
+${email.body}
 `;
+}
 
-  const response = await client.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-      { role: "system", content: systemPrompt },
-      { role: "user", content: fullPrompt },
-    ],
-    temperature: 0,
-  });
+async function runDetection() {
+  try {
+    const userPrompt = buildPrompt(sampleEmail);
 
-  console.log(response.choices[0].message.content);
+    const response = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
+      temperature: 0,
+    });
+
+    const rawOutput = response.choices[0].message.content;
+
+    try {
+      const result = JSON.parse(rawOutput);
+      console.log("=== AI Classification Result ===");
+      console.log(JSON.stringify(result, null, 2));
+    } catch (err) {
+      console.error("Model did not return valid JSON. Raw output:");
+      console.log(rawOutput);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
 
 runDetection();

@@ -1,0 +1,6 @@
+{
+    "sender": "security@apple-login-alert.com",
+    "subject": "Your Apple ID was locked",
+    "body": "Dear user, your Apple ID is locked. To unlock, verify at http://tinyurl.com/appleid-fix",
+    "metadata": "User flagged as suspicious"
+  }
