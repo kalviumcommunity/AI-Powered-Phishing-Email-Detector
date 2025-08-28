@@ -28,30 +28,32 @@ This makes it a smarter, adaptive, and explainable phishing detection system.
 
 ## EXAMPLE JSON OUTPUT
 
-{
-“verdict”: “phishing”,
-“danger_score”: 92,
-“reasons”: [
-“Unusual sender domain: ‘support-paypal-login.com’”,
-“Urgent language: ‘Your account will be suspended within 24 hours’”,
-“Suspicious shortened URL: ‘bit.ly/4PhishPayPal’”,
-“Email requests personal credentials”,
-“Attachment: ‘invoice.exe’ flagged as malicious”
-],
-“suggestion”: “Do not click links, download attachments, or reply. Report immediately to your security team.”
-}
+	{
+	“verdict”: “phishing”,
+	“danger_score”: 92,
+	“reasons”: [
+	“Unusual sender domain: ‘support-paypal-login.com’”,
+	“Urgent language: ‘Your account will be suspended within 24 hours’”,
+	“Suspicious shortened URL: ‘bit.ly/4PhishPayPal’”,
+	“Email requests personal credentials”,
+	“Attachment: ‘invoice.exe’ flagged as malicious”
+	],
+	“suggestion”: “Do not click links, download attachments, or reply. Report immediately to your security team.”
+	}
 
 ## TECH STACK
-	•	Backend: Python or Node.js
-	•	AI Models: GPT-4 / GPT-3.5 with function calling
-	•	NLP Libraries: spaCy, NLTK, transformers
-	•	RAG: FAISS or Pinecone with phishing templates dataset
-	•	Security APIs: VirusTotal, PhishTank, Google Safe Browsing
-	•	Deployment: Docker, Kubernetes (optional for scaling)
+
+•	Backend: Python or Node.js
+•	AI Models: GPT-4 / GPT-3.5 with function calling
+•	NLP Libraries: spaCy, NLTK, transformers
+•	RAG: FAISS or Pinecone with phishing templates dataset
+•	Security APIs: VirusTotal, PhishTank, Google Safe Browsing
+•	Deployment: Docker, Kubernetes (optional for scaling)
 
 ## FUTURE ENHANCEMENTS
-	•	Browser extension for Gmail/Outlook
-	•	Self-learning system adapting to new phishing patterns
-	•	Multilingual support for global phishing campaigns
-	•	Dashboard and analytics to visualize phishing trends
-	•	Integration with SOC AI assistants for automated response
+
+•	Browser extension for Gmail/Outlook
+•	Self-learning system adapting to new phishing patterns
+•	Multilingual support for global phishing campaigns
+•	Dashboard and analytics to visualize phishing trends
+•	Integration with SOC AI assistants for automated response
