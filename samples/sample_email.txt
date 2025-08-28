@@ -1,0 +1,5 @@
+From: support@support-paypal-login.com
+Subject: Urgent: Verify your account now
+Body:
+Dear user, your PayPal account will be suspended within 24 hours.
+Click here to verify: http://bit.ly/4PhishPayPal
