@@ -1,0 +1,24 @@
+{
+  "name": "ai-powered-phishing-email-detector",
+  "version": "1.0.0",
+  "description": "Detect phishing emails using the power of AI, NLP, and LLMs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalviumcommunity/AI-Powered-Phishing-Email-Detector.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalviumcommunity/AI-Powered-Phishing-Email-Detector/issues"
+  },
+  "homepage": "https://github.com/kalviumcommunity/AI-Powered-Phishing-Email-Detector#readme",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "openai": "^5.16.0"
+  }
+}
