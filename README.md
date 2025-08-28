@@ -1,36 +1,57 @@
-# 🛡️ AI-Powered Phishing Email Detector
+# AI-POWERED PHISHING EMAIL DETECTOR
 
-Detect phishing emails using the power of AI, NLP, and LLMs. This tool intelligently analyzes email content to determine whether it's safe, suspicious, or phishing — going beyond traditional rule-based filters.
+Detect phishing emails using the power of AI, NLP, and LLMs.
+This tool goes beyond traditional rule-based filters by using intelligent content analysis to flag suspicious emails and provide actionable security recommendations.
 
----
+## PROJECT OVERVIEW
 
-## 🚀 Project Overview
+Phishing is one of the most common cyber attack methods, tricking users into revealing sensitive information.
+This solution leverages AI, Natural Language Processing, and Large Language Models (LLMs) to detect:
+	•	Deceptive language patterns
+	•	Suspicious URLs and domains
+	•	Social engineering tactics
+	•	Known phishing templates (via RAG)
 
-Phishing emails are one of the most prevalent cyber threats today. This tool uses modern AI techniques to identify deceptive language, suspicious links, and known phishing templates — and provides structured insights to end users.
+This makes it a smarter, adaptive, and explainable phishing detection system.
 
----
+## KEY FEATURES
+	
+  •	LLM-Powered Analysis: Detects manipulative tone, urgency, and fraudulent language
+	•	Function Calling and Entity Extraction: Extracts and validates sender, subject, links, attachments
+	•	RAG (Retrieval-Augmented Generation): Compares emails with a phishing template database
+	•	Structured JSON Verdicts: Clear output with danger score, reasons, and recommended action
+	•	Prompt Engineering: Tuned prompts for reliable phishing detection
+	•	Domain and Link Reputation Checking: Uses VirusTotal, PhishTank, and Google Safe Browsing APIs
+	•	Attachment Risk Detection: Flags dangerous file types (exe, scr, js, docm, etc.)
+	•	Explainable Results: Provides human-understandable reasons for each decision
+	•	Integration Ready: Can be used in email gateways, SOC tools, SIEM systems, or browser extensions
 
-## 🧠 Features
+## EXAMPLE JSON OUTPUT
 
-- 🔎 **LLM-based Analysis** (e.g., GPT-4): Understands tone, urgency, and social engineering patterns
-- 🧩 **Function Calling**: Extracts and checks links, sender addresses, domains
-- 📚 **RAG (Retrieval-Augmented Generation)**: Compares email with a database of known phishing templates
-- 📦 **Structured Output**: JSON verdict with score, reasons, and recommendations
-- ✨ **Prompt Engineering**: Tuned prompts to detect manipulation and malicious intent
-
----
-
-## 📁 Example Output
-
-```json
 {
-  "verdict": "phishing",
-  "danger_score": 92,
-  "reasons": [
-    "Unusual sender domain",
-    "Urgent language: 'account suspended'",
-    "Malicious shortened URL",
-    "Email asks for credentials"
-  ],
-  "suggestion": "Do not click any links or reply. Report to security team."
+“verdict”: “phishing”,
+“danger_score”: 92,
+“reasons”: [
+“Unusual sender domain: ‘support-paypal-login.com’”,
+“Urgent language: ‘Your account will be suspended within 24 hours’”,
+“Suspicious shortened URL: ‘bit.ly/4PhishPayPal’”,
+“Email requests personal credentials”,
+“Attachment: ‘invoice.exe’ flagged as malicious”
+],
+“suggestion”: “Do not click links, download attachments, or reply. Report immediately to your security team.”
 }
+
+## TECH STACK
+	•	Backend: Python or Node.js
+	•	AI Models: GPT-4 / GPT-3.5 with function calling
+	•	NLP Libraries: spaCy, NLTK, transformers
+	•	RAG: FAISS or Pinecone with phishing templates dataset
+	•	Security APIs: VirusTotal, PhishTank, Google Safe Browsing
+	•	Deployment: Docker, Kubernetes (optional for scaling)
+
+## FUTURE ENHANCEMENTS
+	•	Browser extension for Gmail/Outlook
+	•	Self-learning system adapting to new phishing patterns
+	•	Multilingual support for global phishing campaigns
+	•	Dashboard and analytics to visualize phishing trends
+	•	Integration with SOC AI assistants for automated response
